@@ -2,11 +2,11 @@ const { merge } = require('webpack-merge');
 const { commonConfig } = require('./webpack.common');
 
 /**
- * Development Webpack configuration.
+ * Development webpack configuration.
  *
  * This configuration is based on the common, base one. It adds some loaders for
  * CSS and media assets in such way that it allows for hot reloads. Of course,
- * it also sets up the Webpack Development Server.
+ * it also sets up the webpack Development Server.
  */
 module.exports = merge(commonConfig, {
   mode: 'development',

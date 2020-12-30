@@ -2,6 +2,12 @@ const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { commonConfig } = require('./webpack.common');
 
+/**
+ * Production webpack configuration.
+ *
+ * This configuration is based on the common, base one. It creates a minified,
+ * production-ready application bundle.
+ */
 module.exports = merge(commonConfig, {
   // This also sets `process.env.NODE_ENV` to `production`.
   mode: 'production',
