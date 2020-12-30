@@ -16,7 +16,12 @@
 
 import React from 'react';
 import _ from 'lodash';
+import './app.css';
 
 export function App() {
-  return <div>{_.join(['Hello', 'world'], ' ')}</div>;
+  return (
+    <div className="app">
+      {_.join(['Hello', 'world'], ' ')}
+    </div>
+  );
 }

@@ -1,5 +1,7 @@
 const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require ('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { commonConfig } = require('./webpack.common');
 
 /**
@@ -18,10 +20,35 @@ module.exports = merge(commonConfig, {
     filename: 'js/[name].[contenthash].js',
   },
 
+  module: {
+    rules: [
+      // For production, content of the CSS files will extracted into one single file that will be
+      // injected into the document with a `<link>` tag.
+      {
+        test: /\.css$/,
+        use: [
+          // At this stage, the mini loader only extracts all referenced CSS into individual files
+          // (this _should_ go for both imported CSS files as modules and CSS-in-JS).
+          // The option to then merge all files into one is set in its plugin.
+          { loader: MiniCssExtractPlugin.loader },
+
+          // Resolve CSS code, `@import`s and assets used via `url()`.
+          'css-loader',
+        ],
+      },
+    ],
+  },
+
   plugins: [
     // Clean the build directory before each build. This ensures that obsolete files from previous
     // builds don't end up polluting newer ones.
     new CleanWebpackPlugin(),
+
+    // Output the extract CSS into one file. The `HtmlWebpackPlugin` will handle injecting it
+    // with a `<link>` tag.
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css',
+    }),
   ],
 
   optimization: {
@@ -48,5 +75,14 @@ module.exports = merge(commonConfig, {
         },
       },
     },
+
+    minimizer: [
+      // webpack v5 specific syntax that allows extending the default `minimizer`
+      // array instead of replacing it.
+      '...',
+
+      // Minifies CSS.
+      new CssMinimizerPlugin(),
+    ],
   },
 });

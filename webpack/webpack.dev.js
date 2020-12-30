@@ -11,6 +11,23 @@ const { commonConfig } = require('./webpack.common');
 module.exports = merge(commonConfig, {
   mode: 'development',
 
+  module: {
+    rules: [
+      // For development, CSS files will be injected as individual `<style>` tags in the `<head>`
+      // section. This solution is the most performant and will allow fast hot reloads.
+      {
+        test: /\.css$/,
+        use: [
+          // Turns CSS into JavaScript modules that inject `<style>` tags.
+          'style-loader',
+
+          // Resolve CSS code, `@import`s and assets used via `url()`.
+          'css-loader',
+        ],
+      },
+    ],
+  },
+
   // Good quality source maps with fast rebuild times, suitable for development.
   devtool: 'eval-cheap-module-source-map',
 
