@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    // Virtually all modern browsers fully support ES 2015.
+    "target": "es2015",
+
+    "module": "es2015",
+    "moduleResolution": "node",
+
+    // Needed for the below `allowSyntheticDefaultImports`.
+    "esModuleInterop": true,
+
+    // React modules have no default exports and this setting allows to import these modules
+    // as default instead of using the `import * as React from 'react'` syntax.
+    "allowSyntheticDefaultImports": true,
+
+    "sourceMap": true,
+
+    "baseUrl": "./src/",
+
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+
+    "importHelpers": true,
+
+    "strict": true
+  },
+
+  "exclude": [
+    "node_modules"
+  ]
+}
