@@ -15,11 +15,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "tslib": "^2.0.3"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.166",
     "clean-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^5.0.0-beta.1",
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3",
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.0",
     "webpack-dev-server": "^4.0.0-beta.0",

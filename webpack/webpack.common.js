@@ -24,6 +24,16 @@ const commonConfig = {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
 
+  module: {
+    rules: [
+      {
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        use: 'ts-loader',
+      },
+    ],
+  },
+
   plugins: [
     // Copy the entry HTML file to the build directory, inject the output bundles as `<script>`s.
     // Content is minified automatically when `mode` is set to `production`.
