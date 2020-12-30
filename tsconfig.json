@@ -13,6 +13,9 @@
     // as default instead of using the `import * as React from 'react'` syntax.
     "allowSyntheticDefaultImports": true,
 
+    // Transpile JSX syntax to JavaScript using the default `React.createElement` factory function.
+    "jsx": "react",
+
     "sourceMap": true,
 
     "baseUrl": "./src/",

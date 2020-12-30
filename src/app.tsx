@@ -14,14 +14,9 @@
  * limitations under the License.
  */
 
+import React from 'react';
 import _ from 'lodash';
 
-function component() {
-  const element = document.createElement('div');
-
-  element.innerHTML = _.join(['Hello', 'world'], ' ');
-
-  return element;
+export function App() {
+  return <div>{_.join(['Hello', 'world'], ' ')}</div>;
 }
-
-document.body.appendChild(component());
