@@ -29,6 +29,7 @@ node_modules/
 
 # Build artifacts
 build/
+dist/
 
 # Output of 'npm pack'
 *.tgz
