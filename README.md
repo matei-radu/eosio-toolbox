@@ -1,4 +1,8 @@
 # EOSIO Toolbox
+
+## Contributing
+Refer to [CONTRIBUTING.md](./CONTRIBUTING.md) for information on how to contribute to this project.
+
 ## License
 Copyright 2021 Matei Bogdan Radu
 
