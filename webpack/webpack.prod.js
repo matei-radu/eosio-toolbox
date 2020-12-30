@@ -31,7 +31,15 @@ module.exports = merge(commonConfig, {
         default: false,
         vendors: false,
 
-        // All vendors packages
+        // React specific chunk
+        react: {
+          chunks: 'all',
+          name: 'react',
+          test: /node_modules\/(react|react-dom)\//,
+          priority: 20,
+        },
+
+        // All other vendors
         vendor: {
           chunks: 'all',
           name: 'vendor',
