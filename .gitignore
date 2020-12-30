@@ -1,0 +1,46 @@
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+$RECYCLE.BIN/
+*.lnk
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# GNU/Linux
+.Trash-*
+.nfs*
+.fuse_hidden*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Node dependencies
+node_modules/
+
+# Build artifacts
+build/
+
+# Output of 'npm pack'
+*.tgz
+
+# IDEs
+.vscode
+.idea/
+.editorconfig
+
+# Configuration files
+.env
+.npmrc
+
+# Coverage directory
+coverage/
