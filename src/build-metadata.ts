@@ -16,7 +16,12 @@
 
 import { parseISO } from 'date-fns';
 
-/** Metadata, injected at build time, that describes the application build. */
+/**
+ * Metadata, injected at build time, that describes the application build.
+ *
+ * Most of these values are inferred by the build system, however they can
+ * be explicitly set through environment variables at build time.
+ */
 export const buildMetadata = {
   version: process.env.EOSIO_TOOLBOX_BUILD_VERSION ?? '0.0.0',
   buildDate: parseBuildDate(process.env.EOSIO_TOOLBOX_BUILD_DATE, new Date(0)),
