@@ -16,11 +16,17 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { formatISO } from 'date-fns';
+import { buildMetadata } from './build-metadata';
 
 export function Settings() {
   return (
     <div>
       <h1>Settings</h1>
+      <h2>Info</h2>
+      <p>Version {buildMetadata.version}</p>
+      <p>Build hash: {buildMetadata.buildHash}</p>
+      <p>Build time: {formatISO(buildMetadata.buildDate)}</p>
       <Link to={'/'}>Home</Link>
     </div>
   );
