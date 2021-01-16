@@ -1,8 +1,11 @@
 const path = require('path');
+const { EnvironmentPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DotenvPlugin = require('dotenv-webpack');
 
-const DIST_PATH = path.join(__dirname, '..', 'dist');
-const SRC_PATH = path.join(__dirname, '..', 'src');
+const ROOT_PATH = path.join(__dirname, '..');
+const DIST_PATH = path.join(ROOT_PATH, 'dist');
+const SRC_PATH = path.join(ROOT_PATH, 'src');
 
 /**
  * A base, common webpack configuration.
@@ -40,11 +43,29 @@ const commonConfig = {
     new HtmlWebpackPlugin({
       template: path.join(SRC_PATH, 'index.html'),
     }),
+
+    // Replace instances of `process.env` in the application code with their actual values
+    // during the build process.
+    new DotenvPlugin({
+      path: path.join(ROOT_PATH, '.env'),
+      // Load all the predefined `process.env` variables which will trump anything local.
+      systemvars: true,
+    }),
+
+    // Infer and compose build metadata.
+    // Note that with EnvironmentPlugin chained _after_ DotenvPlugin it is possible to overwrite
+    // metadata values with the latter.
+    new EnvironmentPlugin({
+      'EOSIO_TOOLBOX_BUILD_VERSION': require(path.join(ROOT_PATH, 'package.json')).version,
+      'EOSIO_TOOLBOX_BUILD_HASH': require('child_process').execSync('git rev-parse HEAD').toString(),
+      'EOSIO_TOOLBOX_BUILD_DATE': new Date().toISOString(),
+    }),
   ],
 };
 
 module.exports = {
   commonConfig,
+  ROOT_PATH,
   DIST_PATH,
-  SRC_PATH
+  SRC_PATH,
 }
