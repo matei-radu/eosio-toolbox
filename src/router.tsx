@@ -15,13 +15,19 @@
  */
 
 import React from 'react';
-import { Router } from './router';
-import './app.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home } from './home';
+import { Settings } from './settings';
+import { NotFound } from './not-found';
 
-export function App() {
+export function Router() {
   return (
-    <div className="app">
-      <Router />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path={'/'} element={<Home />} />
+        <Route path={'/settings'} element={<Settings />} />
+        <Route path={'*'} element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
