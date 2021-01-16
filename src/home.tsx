@@ -15,13 +15,17 @@
  */
 
 import React from 'react';
-import { Router } from './router';
-import './app.css';
+import { Link } from 'react-router-dom';
 
-export function App() {
+export function Home() {
   return (
-    <div className="app">
-      <Router />
+    <div>
+      <h1>Home</h1>
+      <nav>
+        <ul>
+          <li><Link to={'/settings'}>Settings</Link></li>
+        </ul>
+      </nav>
     </div>
   );
 }

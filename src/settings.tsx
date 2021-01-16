@@ -15,13 +15,13 @@
  */
 
 import React from 'react';
-import { Router } from './router';
-import './app.css';
+import { Link } from 'react-router-dom';
 
-export function App() {
+export function Settings() {
   return (
-    <div className="app">
-      <Router />
+    <div>
+      <h1>Settings</h1>
+      <Link to={'/'}>Home</Link>
     </div>
   );
 }
