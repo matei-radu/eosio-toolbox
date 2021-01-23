@@ -14,16 +14,17 @@
  * limitations under the License.
  */
 
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { EosioAccountResources, useAccount } from './use-account';
+import { EosioAccountResources, EosioResource, useAccount } from './use-account';
+import './account.css';
 
 export function Account() {
   const accountName = useParams()['accountName'];
   const { resources, isLoading }= useAccount(accountName);
 
   return (
-    <div>
+    <div className="account">
       <h1>Account</h1>
       <Link to={'/'}>Home</Link>
       {isLoading || !resources ? <p>Loading...</p> : <AccountResources resources={resources} />}
@@ -35,10 +36,36 @@ export function AccountResources({ resources } : { resources: EosioAccountResour
   const { ram, cpu, net } = resources;
 
   return (
-    <div>
-      <p>RAM: {ram.used}/{ram.max} ({resourceUsagePercentage(ram.used, ram.max)}%)</p>
-      <p>CPU: {cpu.used}/{cpu.max} ({resourceUsagePercentage(cpu.used, cpu.max)}%)</p>
-      <p>NET: {net.used}/{net.max} ({resourceUsagePercentage(net.used, net.max)}%)</p>
+    <section className="account-resources">
+      <h2>Resources</h2>
+      <div className="resource-row-container">
+        <ResourceRow res={ram} resName={'RAM'} />
+        <ResourceRow res={cpu} resName={'CPU'} />
+        <ResourceRow res={net} resName={'NET'} />
+      </div>
+    </section>
+  );
+}
+
+function ResourceRow({ res, resName }: { res: EosioResource, resName: string }) {
+  return (
+    <div className="resource-row">
+      <span className="resource-row__text">
+        <span>{resName} - {res.used} / {res.max}</span>
+        <span>{resourceUsagePercentage(res.used, res.max)}%</span>
+      </span>
+      <ResourceBar res={res} />
+    </div>
+  );
+}
+
+function ResourceBar({ res }: { res: EosioResource }) {
+  const percentage = resourceUsagePercentage(res.used, res.max);
+  const fillStyle: CSSProperties = { width: `${percentage}%` };
+
+  return (
+    <div className="resource-bar">
+      <span className="resource-bar__fill" style={fillStyle} />
     </div>
   );
 }
