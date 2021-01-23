@@ -16,10 +16,13 @@
 
 import { JsonRpc } from 'eosjs';
 import { config } from './config';
+import { getAccount } from './get-account';
 
-/**
- * Returns a valid `JsonRpc` instance.
- */
-export function jsonRpc(): JsonRpc {
+/** Returns a valid `JsonRpc` instance. */
+export function getJsonRpc(): JsonRpc {
   return new JsonRpc(config.nodeEndpoint, { fetch });
+}
+
+export const jsonRpc = {
+  getAccount,
 }
