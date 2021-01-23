@@ -15,7 +15,7 @@
  */
 
 import { useEffect, useState } from 'react';
-import { JsonRpc } from 'eosjs';
+import { jsonRpc } from '../eosio';
 
 export interface EosioResource {
   used: number;
@@ -45,7 +45,7 @@ export function useAccount(accountName: string) {
       }
     };
 
-    const rpc = new JsonRpc('https://eos.greymass.com', { fetch });
+    const rpc = jsonRpc();
     rpc.get_account(accountName)
       .then(accountData => setResults(accountData, undefined))
       .catch(error => setResults(undefined, error))
