@@ -14,22 +14,4 @@
  * limitations under the License.
  */
 
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Home } from './home';
-import { Account } from './account';
-import { Settings } from './settings';
-import { NotFound } from './not-found';
-
-export function Router() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path={'/'} element={<Home />} />
-        <Route path={'/account/:accountName'} element={<Account />} />
-        <Route path={'/settings'} element={<Settings />} />
-        <Route path={'*'} element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
+export { Account } from './account';
