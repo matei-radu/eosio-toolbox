@@ -1,0 +1,29 @@
+.account {
+  padding: 0 1rem;
+}
+
+.resource-row-container {
+  display: grid;
+  row-gap: 0.6rem;
+}
+
+.resource-row__text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.account-resources .resource-bar {
+  --color-resourcebar-background: #d3d3d3;
+  --color-resourcebar-fill: var(--color-accent);
+
+  width: 100%;
+  height: 0.4rem;
+  background-color: var(--color-resourcebar-background);
+}
+
+.resource-bar .resource-bar__fill {
+  display: block;
+  height: inherit;
+  background-color: var(--color-resourcebar-fill);
+}

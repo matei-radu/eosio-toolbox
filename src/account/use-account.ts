@@ -17,7 +17,7 @@
 import { useEffect, useState } from 'react';
 import { JsonRpc } from 'eosjs';
 
-interface EosioResource {
+export interface EosioResource {
   used: number;
   max: number;
 }
