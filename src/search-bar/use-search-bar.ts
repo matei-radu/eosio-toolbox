@@ -31,7 +31,11 @@ export function useSearchBar() {
   const onSubmit = useCallback((e: FormEvent) => {
     e.preventDefault();
 
-    navigate(`/account/${searchText}`);
+    // The EOSIO API is case sensitive and all account names are
+    // lower case, so the search text must be transformed.
+    const lowerCaseSearchText = searchText.toLowerCase();
+
+    navigate(`/account/${lowerCaseSearchText}`);
 
     inputTextRef.current?.blur();
     submitButtonRef.current?.blur();

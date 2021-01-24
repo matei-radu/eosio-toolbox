@@ -68,13 +68,14 @@ export function useAccount(accountName: string) {
           used: account.net_limit.used,
         },
       });
-      setIsLoading(false);
     } else {
       setResources(undefined);
     }
 
+    setIsLoading(false);
+
     return () => {};
   }, [account, setResources, setIsLoading]);
 
-  return { account, resources, isLoading, error };
+  return { resources, isLoading, error };
 }

@@ -14,25 +14,53 @@
  * limitations under the License.
  */
 
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, PropsWithChildren } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { EosioAccountResources, EosioResource, useAccount } from './use-account';
 import './account.css';
 
 export function Account() {
   const accountName = useParams()['accountName'];
-  const { resources, isLoading }= useAccount(accountName);
+  const { resources, isLoading, error }= useAccount(accountName);
 
+  if (isLoading) {
+    return (
+      <AccountBaseContent>
+        <Loading />
+      </AccountBaseContent>
+    );
+  }
+
+  if (error || !resources) {
+    return (
+      <AccountBaseContent>
+        <p>Cannot find account <i>{accountName}</i>.</p>
+      </AccountBaseContent>
+    );
+  }
+
+  return (
+    <AccountBaseContent>
+      <AccountResources resources={resources} />
+    </AccountBaseContent>
+  );
+}
+
+function AccountBaseContent({ children }: PropsWithChildren<{}>) {
   return (
     <div className="account">
       <h1>Account</h1>
       <Link to={'/'}>Home</Link>
-      {isLoading || !resources ? <p>Loading...</p> : <AccountResources resources={resources} />}
+      {children}
     </div>
   );
 }
 
-export function AccountResources({ resources } : { resources: EosioAccountResources }) {
+function Loading() {
+  return <p>Loading...</p>;
+}
+
+function AccountResources({ resources } : { resources: EosioAccountResources }) {
   const { ram, cpu, net } = resources;
 
   return (
