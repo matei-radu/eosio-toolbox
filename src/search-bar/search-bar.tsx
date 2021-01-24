@@ -14,28 +14,18 @@
  * limitations under the License.
  */
 
-import React, { ChangeEvent, createRef, FormEvent, useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useSearchBar } from './use-search-bar';
 import './search-bar.css';
 
 export function SearchBar() {
-  const [searchText, setSearchText] = useState('');
-
-  const inputRef = createRef<HTMLInputElement>();
-  const submitRef = createRef<HTMLInputElement>();
-
-  const onSearchTextChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value);
-  }, [setSearchText]);
-
-  const navigate = useNavigate();
-  const onSubmit = useCallback((e: FormEvent) => {
-    e.preventDefault();
-
-    navigate(`/account/${searchText}`);
-    inputRef.current?.blur();
-    submitRef.current?.blur();
-  }, [searchText, navigate]);
+  const {
+    searchText,
+    onSearchTextChange,
+    onSubmit,
+    inputTextRef,
+    submitButtonRef,
+  } = useSearchBar();
 
   return (
     <section className="search-bar">
@@ -51,7 +41,7 @@ export function SearchBar() {
             id="search-bar-input-txt"
             className="search-bar-form__input"
             type="text"
-            ref={inputRef}
+            ref={inputTextRef}
             value={searchText}
             onChange={onSearchTextChange}
             placeholder={'Search accounts…'}
@@ -59,7 +49,7 @@ export function SearchBar() {
           <input
             className="search-bar-form__submit"
             type="submit"
-            ref={submitRef}
+            ref={submitButtonRef}
             value="Go"
           />
         </div>
