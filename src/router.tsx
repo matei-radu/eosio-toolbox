@@ -16,6 +16,7 @@
 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { SearchBar } from './search-bar';
 import { Home } from './home';
 import { Account } from './account';
 import { Settings } from './settings';
@@ -24,6 +25,7 @@ import { NotFound } from './not-found';
 export function Router() {
   return (
     <BrowserRouter>
+      <SearchBar />
       <Routes>
         <Route path={'/'} element={<Home />} />
         <Route path={'/account/:accountName'} element={<Account />} />
