@@ -57,15 +57,23 @@ const commonConfig = {
     // metadata values with the latter.
     new EnvironmentPlugin({
       'EOSIO_TOOLBOX_BUILD_VERSION': require(path.join(ROOT_PATH, 'package.json')).version,
-      'EOSIO_TOOLBOX_BUILD_HASH': require('child_process').execSync('git rev-parse HEAD').toString(),
+      'EOSIO_TOOLBOX_BUILD_HASH': getBuildHashFromGit(),
       'EOSIO_TOOLBOX_BUILD_DATE': new Date().toISOString(),
     }),
   ],
 };
+
+function getBuildHashFromGit() {
+  try {
+    return require('child_process').execSync('git rev-parse HEAD').toString();
+  } catch (e) {
+    return undefined;
+  }
+}
 
 module.exports = {
   commonConfig,
   ROOT_PATH,
   DIST_PATH,
   SRC_PATH,
-}
+};
