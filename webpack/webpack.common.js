@@ -55,17 +55,26 @@ const commonConfig = {
     // Infer and compose build metadata.
     // Note that with EnvironmentPlugin chained _after_ DotenvPlugin it is possible to overwrite
     // metadata values with the latter.
-    new EnvironmentPlugin({
-      'EOSIO_TOOLBOX_BUILD_VERSION': require(path.join(ROOT_PATH, 'package.json')).version,
-      'EOSIO_TOOLBOX_BUILD_HASH': getBuildHashFromGit(),
-      'EOSIO_TOOLBOX_BUILD_DATE': new Date().toISOString(),
-    }),
+    new EnvironmentPlugin((() => {
+      const vars = {
+        'EOSIO_TOOLBOX_BUILD_VERSION': require(path.join(ROOT_PATH, 'package.json')).version,
+        'EOSIO_TOOLBOX_BUILD_DATE': new Date().toISOString(),
+      };
+
+      // Add the build hash variable only if it is avaialble.
+      const buildHash = getBuildHashFromGit();
+      if (buildHash) {
+        vars['EOSIO_TOOLBOX_BUILD_HASH'] = buildHash;
+      }
+
+      return vars;
+    })()),
   ],
 };
 
 function getBuildHashFromGit() {
   try {
-    return require('child_process').execSync('git rev-parse HEAD').toString();
+    return require('child_process').execSync('fooby rev-parse HEAD').toString();
   } catch (e) {
     return undefined;
   }
