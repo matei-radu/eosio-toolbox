@@ -14,5 +14,5 @@
  * limitations under the License.
  */
 
-export { jsonRpc } from './json-rpc';
-export { EosioAccount, EosioRequiredAuth, EosioResourceLimit, EosioPermission } from './get-account';
+export { jsonRpc } from './json-rpc'
+export { EosioAccount, EosioRequiredAuth, EosioResourceLimit, EosioPermission } from './get-account'

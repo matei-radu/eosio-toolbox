@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { SearchBar } from './search-bar';
-import { Home } from './home';
-import { Account } from './account';
-import { Settings } from './settings';
-import { NotFound } from './not-found';
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { SearchBar } from './search-bar'
+import { Home } from './home'
+import { Account } from './account'
+import { Settings } from './settings'
+import { NotFound } from './not-found'
 
-export function Router() {
+export const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <SearchBar />
@@ -33,5 +33,5 @@ export function Router() {
         <Route path={'*'} element={<NotFound />} />
       </Routes>
     </BrowserRouter>
-  );
+  )
 }

@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-import React from 'react';
-import { useSearchBar } from './use-search-bar';
-import './search-bar.css';
+import React from 'react'
+import { useSearchBar } from './use-search-bar'
+import './search-bar.css'
 
-export function SearchBar() {
+export const SearchBar: React.FC = () => {
   const {
     searchText,
     onSearchTextChange,
     onSubmit,
     inputTextRef,
     submitButtonRef,
-  } = useSearchBar();
+  } = useSearchBar()
 
   return (
     <section className="search-bar">
@@ -55,5 +55,5 @@ export function SearchBar() {
         </div>
       </form>
     </section>
-  );
+  )
 }

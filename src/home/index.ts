@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-export { Home } from './home';
+export { Home } from './home'

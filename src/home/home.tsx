@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './home.css';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './home.css'
 
-export function Home() {
+export const Home: React.FC = () => {
   return (
     <div className="home">
       <h1>Home</h1>
@@ -28,5 +28,5 @@ export function Home() {
         </ul>
       </nav>
     </div>
-  );
+  )
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { parseISO } from 'date-fns';
+import { parseISO } from 'date-fns'
 
 /**
  * Metadata, injected at build time, that describes the application build.
@@ -26,13 +26,13 @@ export const buildMetadata = {
   version: process.env.EOSIO_TOOLBOX_BUILD_VERSION ?? '0.0.0',
   buildDate: parseBuildDate(process.env.EOSIO_TOOLBOX_BUILD_DATE, new Date(0)),
   buildHash: process.env.EOSIO_TOOLBOX_BUILD_HASH ?? 'hash',
-};
+}
 
 type ProcessEnvVar = typeof process.env[string];
 
 function parseBuildDate(dateAsISOString: ProcessEnvVar, fallbackDate: Date): Date {
-  const parsedDate = dateAsISOString ? parseISO(dateAsISOString) : fallbackDate;
+  const parsedDate = dateAsISOString ? parseISO(dateAsISOString) : fallbackDate
 
   // `parseISO` can return an invalid date `new Date(NaN)` if it fails to parse.
-  return !Number.isNaN(parsedDate.getTime()) ? parsedDate : fallbackDate;
+  return !Number.isNaN(parsedDate.getTime()) ? parsedDate : fallbackDate
 }

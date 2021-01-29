@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { useEffect, useState } from 'react';
-import { EosioAccount, jsonRpc } from '../eosio';
+import { useEffect, useState } from 'react'
+import { EosioAccount, jsonRpc } from '../eosio'
 
 export interface EosioResource {
   used: number;
@@ -28,29 +28,35 @@ export interface EosioAccountResources {
   net: EosioResource;
 }
 
-export function useAccount(accountName: string) {
-  const [account, setAccount] = useState<EosioAccount | undefined>(undefined);
-  const [error, setError] = useState(undefined);
-  const [isLoading, setIsLoading] = useState(true);
-  const [resources, setResources] = useState<EosioAccountResources | undefined>(undefined);
+interface UseAccount {
+  resources: EosioAccountResources | undefined;
+  isLoading: boolean;
+  error: any;
+}
+
+export function useAccount(accountName: string): UseAccount {
+  const [account, setAccount] = useState<EosioAccount | undefined>(undefined)
+  const [error, setError] = useState(undefined)
+  const [isLoading, setIsLoading] = useState(true)
+  const [resources, setResources] = useState<EosioAccountResources | undefined>(undefined)
 
   useEffect(() => {
-    let isSafeToUpdateState = true;
-    setIsLoading(true);
+    let isSafeToUpdateState = true
+    setIsLoading(true)
 
-    const setResults = (accountData: any, error: any) => {
+    const setResults = (accountData: EosioAccount | undefined, error: any) => {
       if (isSafeToUpdateState) {
-        setAccount(accountData);
-        setError(error);
+        setAccount(accountData)
+        setError(error)
       }
-    };
+    }
 
     jsonRpc.getAccount(accountName)
       .then(accountData => setResults(accountData, undefined))
       .catch(error => setResults(undefined, error))
 
-    return () => { isSafeToUpdateState = false; };
-  }, [accountName, setAccount, setIsLoading, setError]);
+    return () => { isSafeToUpdateState = false }
+  }, [accountName, setAccount, setIsLoading, setError])
 
   useEffect(() => {
     if (account) {
@@ -67,15 +73,13 @@ export function useAccount(accountName: string) {
           max: account.net_limit.available,
           used: account.net_limit.used,
         },
-      });
+      })
     } else {
-      setResources(undefined);
+      setResources(undefined)
     }
 
-    setIsLoading(false);
+    setIsLoading(false)
+  }, [account, setResources, setIsLoading])
 
-    return () => {};
-  }, [account, setResources, setIsLoading]);
-
-  return { resources, isLoading, error };
+  return { resources, isLoading, error }
 }

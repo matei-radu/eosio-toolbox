@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-import { getJsonRpc } from './json-rpc';
+import { getJsonRpc } from './json-rpc'
 
-type EosioAccountName = string;
-type DateISOString = string;
-type EosioAssetString = string;
+type EosioAccountName = string
+type DateISOString = string
+type EosioAssetString = string
 
 export interface EosioResourceLimit {
   used: number;
@@ -65,5 +65,5 @@ export interface EosioAccount {
  * Wrapper around `JsonRpc.get_account` with typed return. Functionality is unchanged.
  */
 export function getAccount(accountName: string): Promise<EosioAccount> {
-  return getJsonRpc().get_account(accountName);
+  return getJsonRpc().get_account(accountName)
 }
