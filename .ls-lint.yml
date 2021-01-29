@@ -1,0 +1,30 @@
+ls:
+  src:
+    .dir: kebab-case
+
+    .html: kebab-case
+
+    .ts: kebab-case
+    .test.ts: kebab-case
+    .spec.ts: kebab-case
+
+    .tsx: kebab-case
+    .test.tsx: kebab-case
+    .spec.tsx: kebab-case
+
+    .d.ts: kebab-case
+
+    .js: kebab-case
+    .test.js: kebab-case
+    .spec.js: kebab-case
+
+    .jsx: kebab-case
+    .test.jsx: kebab-case
+    .spec.jsx: kebab-case
+
+    .css: kebab-case
+
+    .svg: kebab-case
+    .png: kebab-case
+
+    .json: kebab-case
