@@ -28,7 +28,13 @@ export interface EosioAccountResources {
   net: EosioResource;
 }
 
-export function useAccount(accountName: string) {
+interface UseAccount {
+  resources: EosioAccountResources | undefined;
+  isLoading: boolean;
+  error: any;
+}
+
+export function useAccount(accountName: string): UseAccount {
   const [account, setAccount] = useState<EosioAccount | undefined>(undefined);
   const [error, setError] = useState(undefined);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +44,7 @@ export function useAccount(accountName: string) {
     let isSafeToUpdateState = true;
     setIsLoading(true);
 
-    const setResults = (accountData: any, error: any) => {
+    const setResults = (accountData: EosioAccount | undefined, error: any) => {
       if (isSafeToUpdateState) {
         setAccount(accountData);
         setError(error);
@@ -73,8 +79,6 @@ export function useAccount(accountName: string) {
     }
 
     setIsLoading(false);
-
-    return () => {};
   }, [account, setResources, setIsLoading]);
 
   return { resources, isLoading, error };

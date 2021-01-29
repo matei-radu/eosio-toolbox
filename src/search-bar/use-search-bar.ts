@@ -14,13 +14,21 @@
  * limitations under the License.
  */
 
-import { ChangeEvent, createRef, FormEvent, useCallback, useState } from 'react';
+import { createRef, useCallback, useState, FormHTMLAttributes, InputHTMLAttributes, RefObject } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export function useSearchBar() {
+interface UseSearchBar {
+  searchText: string;
+  onSearchTextChange: NonNullable<InputHTMLAttributes<HTMLInputElement>['onChange']>;
+  onSubmit: NonNullable<FormHTMLAttributes<HTMLFormElement>['onSubmit']>;
+  inputTextRef: RefObject<HTMLInputElement>;
+  submitButtonRef: RefObject<HTMLInputElement>;
+}
+
+export function useSearchBar(): UseSearchBar {
   const [searchText, setSearchText] = useState('');
 
-  const onSearchTextChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const onSearchTextChange = useCallback<UseSearchBar['onSearchTextChange']>((e) => {
     setSearchText(e.target.value);
   }, [setSearchText]);
 
@@ -28,7 +36,7 @@ export function useSearchBar() {
   const submitButtonRef = createRef<HTMLInputElement>();
 
   const navigate = useNavigate();
-  const onSubmit = useCallback((e: FormEvent) => {
+  const onSubmit = useCallback<UseSearchBar['onSubmit']>((e) => {
     e.preventDefault();
 
     // The EOSIO API is case sensitive and all account names are

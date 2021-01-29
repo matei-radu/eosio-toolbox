@@ -18,7 +18,7 @@ import React from 'react';
 import { Router } from './router';
 import './app.css';
 
-export function App() {
+export const App: React.FC = () => {
   return (
     <div className="app">
       <Router />

@@ -18,7 +18,7 @@ import React from 'react';
 import { useSearchBar } from './use-search-bar';
 import './search-bar.css';
 
-export function SearchBar() {
+export const SearchBar: React.FC = () => {
   const {
     searchText,
     onSearchTextChange,

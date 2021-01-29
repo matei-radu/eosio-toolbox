@@ -22,7 +22,7 @@ import { Account } from './account';
 import { Settings } from './settings';
 import { NotFound } from './not-found';
 
-export function Router() {
+export const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <SearchBar />
