@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import { JsonRpc } from 'eosjs';
-import { config } from './config';
-import { getAccount } from './get-account';
+import { JsonRpc } from 'eosjs'
+import { config } from './config'
+import { getAccount } from './get-account'
 
 /** Returns a valid `JsonRpc` instance. */
 export function getJsonRpc(): JsonRpc {
-  return new JsonRpc(config.nodeEndpoint, { fetch });
+  return new JsonRpc(config.nodeEndpoint, { fetch })
 }
 
 export const jsonRpc = {

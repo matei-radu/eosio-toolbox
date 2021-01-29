@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-export { NotFound } from './not-found';
+export { NotFound } from './not-found'

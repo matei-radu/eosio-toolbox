@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-import React, { CSSProperties } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { EosioAccountResources, EosioResource, useAccount } from './use-account';
-import './account.css';
+import React, { CSSProperties } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { EosioAccountResources, EosioResource, useAccount } from './use-account'
+import './account.css'
 
 export const Account: React.FC = () => {
-  const accountName = useParams()['accountName'];
-  const { resources, isLoading, error }= useAccount(accountName);
+  const accountName = useParams()['accountName']
+  const { resources, isLoading, error }= useAccount(accountName)
 
   if (isLoading) {
     return (
       <AccountBaseContent>
         <Loading />
       </AccountBaseContent>
-    );
+    )
   }
 
   if (error || !resources) {
@@ -36,14 +36,14 @@ export const Account: React.FC = () => {
       <AccountBaseContent>
         <p>Cannot find account <i>{accountName}</i>.</p>
       </AccountBaseContent>
-    );
+    )
   }
 
   return (
     <AccountBaseContent>
       <AccountResources resources={resources} />
     </AccountBaseContent>
-  );
+  )
 }
 
 const AccountBaseContent: React.FC = ({ children }) => {
@@ -53,15 +53,15 @@ const AccountBaseContent: React.FC = ({ children }) => {
       <Link to={'/'}>Home</Link>
       {children}
     </div>
-  );
+  )
 }
 
 function Loading() {
-  return <p>Loading...</p>;
+  return <p>Loading...</p>
 }
 
 const AccountResources: React.FC<{ resources: EosioAccountResources }> = ({ resources }) => {
-  const { ram, cpu, net } = resources;
+  const { ram, cpu, net } = resources
 
   return (
     <section className="account-resources">
@@ -72,10 +72,10 @@ const AccountResources: React.FC<{ resources: EosioAccountResources }> = ({ reso
         <ResourceRow res={net} resName={'NET'} />
       </div>
     </section>
-  );
+  )
 }
 
-const ResourceRow: React.FC<{ res: EosioResource, resName: string }> = ({ res, resName }) => {
+const ResourceRow: React.FC<{ res: EosioResource; resName: string }> = ({ res, resName }) => {
   return (
     <div className="resource-row">
       <span className="resource-row__text">
@@ -84,24 +84,24 @@ const ResourceRow: React.FC<{ res: EosioResource, resName: string }> = ({ res, r
       </span>
       <ResourceBar res={res} />
     </div>
-  );
+  )
 }
 
 const ResourceBar: React.FC<{ res: EosioResource }> = ({ res }) => {
-  const percentage = resourceUsagePercentage(res.used, res.max);
-  const fillStyle: CSSProperties = { width: `${percentage}%` };
+  const percentage = resourceUsagePercentage(res.used, res.max)
+  const fillStyle: CSSProperties = { width: `${percentage}%` }
 
   return (
     <div className="resource-bar">
       <span className="resource-bar__fill" style={fillStyle} />
     </div>
-  );
+  )
 }
 
 function resourceUsagePercentage(used: number, max: number): number {
   if (max === 0) {
-    return 100;
+    return 100
   }
 
-  return Math.floor((used / max) * 100);
+  return Math.floor((used / max) * 100)
 }

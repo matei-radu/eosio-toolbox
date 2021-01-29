@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './home.css';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './home.css'
 
 export const Home: React.FC = () => {
   return (
@@ -28,5 +28,5 @@ export const Home: React.FC = () => {
         </ul>
       </nav>
     </div>
-  );
+  )
 }

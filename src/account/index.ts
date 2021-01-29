@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-export { Account } from './account';
+export { Account } from './account'

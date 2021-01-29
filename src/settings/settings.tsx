@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { formatISO } from 'date-fns';
-import { buildMetadata } from '../build-metadata';
-import './settings.css';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { formatISO } from 'date-fns'
+import { buildMetadata } from '../build-metadata'
+import './settings.css'
 
 export const Settings: React.FC = () => {
   return (
@@ -30,5 +30,5 @@ export const Settings: React.FC = () => {
       <p>Build time: {formatISO(buildMetadata.buildDate)}</p>
       <Link to={'/'}>Home</Link>
     </div>
-  );
+  )
 }

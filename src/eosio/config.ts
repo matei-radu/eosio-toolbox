@@ -16,4 +16,4 @@
 
 export const config = {
   nodeEndpoint: 'https://eos.greymass.com',
-};
+}

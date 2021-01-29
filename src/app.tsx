@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-import React from 'react';
-import { Router } from './router';
-import './app.css';
+import React from 'react'
+import { Router } from './router'
+import './app.css'
 
 export const App: React.FC = () => {
   return (
     <div className="app">
       <Router />
     </div>
-  );
+  )
 }

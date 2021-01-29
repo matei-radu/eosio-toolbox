@@ -14,8 +14,15 @@
  * limitations under the License.
  */
 
-import { createRef, useCallback, useState, FormHTMLAttributes, InputHTMLAttributes, RefObject } from 'react'
-import { useNavigate } from 'react-router-dom';
+import {
+  createRef,
+  useCallback,
+  useState,
+  FormHTMLAttributes,
+  InputHTMLAttributes,
+  RefObject,
+} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 interface UseSearchBar {
   searchText: string;
@@ -26,28 +33,28 @@ interface UseSearchBar {
 }
 
 export function useSearchBar(): UseSearchBar {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState('')
 
   const onSearchTextChange = useCallback<UseSearchBar['onSearchTextChange']>((e) => {
-    setSearchText(e.target.value);
-  }, [setSearchText]);
+    setSearchText(e.target.value)
+  }, [setSearchText])
 
-  const inputTextRef = createRef<HTMLInputElement>();
-  const submitButtonRef = createRef<HTMLInputElement>();
+  const inputTextRef = createRef<HTMLInputElement>()
+  const submitButtonRef = createRef<HTMLInputElement>()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const onSubmit = useCallback<UseSearchBar['onSubmit']>((e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // The EOSIO API is case sensitive and all account names are
     // lower case, so the search text must be transformed.
-    const lowerCaseSearchText = searchText.toLowerCase();
+    const lowerCaseSearchText = searchText.toLowerCase()
 
-    navigate(`/account/${lowerCaseSearchText}`);
+    navigate(`/account/${lowerCaseSearchText}`)
 
-    inputTextRef.current?.blur();
-    submitButtonRef.current?.blur();
-  }, [searchText, navigate]);
+    inputTextRef.current?.blur()
+    submitButtonRef.current?.blur()
+  }, [searchText, navigate])
 
   return {
     searchText,
@@ -55,5 +62,5 @@ export function useSearchBar(): UseSearchBar {
     onSubmit,
     inputTextRef,
     submitButtonRef,
-  };
+  }
 }
