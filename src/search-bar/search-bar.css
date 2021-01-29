@@ -3,14 +3,12 @@
   --color-searchbar-inactive: #d3d3d3;
 
   padding: 1rem;
-
   font-family: 'Open Sans', sans-serif;
 }
 
 .search-bar-form {
   display: flex;
   flex-direction: column;
-
   border: 2px solid var(--color-searchbar-inactive);
 }
 
@@ -35,11 +33,9 @@
 
 .search-bar-form__input {
   flex: 1;
-
   box-sizing: border-box;
   padding: 0 0.6rem;
   min-width: 64px;
-
   border: none;
   outline: none;
 }
@@ -48,7 +44,6 @@
   margin: 2px 2px 2px 8px;
   width: 56px;
   height: 32px;
-
   border: none;
   outline: none;
   background-color: var(--color-searchbar);
