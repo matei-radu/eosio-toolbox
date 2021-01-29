@@ -1,5 +1,5 @@
-const { merge } = require('webpack-merge');
-const { commonConfig } = require('./webpack.common');
+const { merge } = require('webpack-merge')
+const { commonConfig } = require('./webpack.common')
 
 /**
  * Development webpack configuration.
@@ -43,4 +43,4 @@ module.exports = merge(commonConfig, {
     // The application uses the native HTML5 History API and redirects 404s to `index.html`.
     historyApiFallback: true,
   },
-});
+})
