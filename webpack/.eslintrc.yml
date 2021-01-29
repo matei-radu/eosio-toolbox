@@ -1,0 +1,43 @@
+# The webpack source code is a completely different setup than the React
+# application. So, it is easier to just have a separate ESLint config.
+
+root: true
+
+extends:
+  - eslint:recommended
+
+env:
+  node: true
+  commonjs: true
+
+parserOptions:
+  ecmaVersion: 2020
+
+rules:
+  # Styling rules, must be 'warn' level since they are not dangerous things.
+  semi: [warn, never, { beforeStatementContinuationChars: always }]
+  quotes: [warn, single, { avoidEscape: true }]
+  eol-last: [warn, always]
+  no-trailing-spaces: warn
+  comma-dangle: [warn, always-multiline]
+  no-multiple-empty-lines: [warn, { max: 2, maxEOF: 1 }]
+  indent: [warn, 2, { SwitchCase: 1, flatTernaryExpressions: true }]
+  max-len: [warn, { code: 100, ignoreUrls: true, ignoreRegExpLiterals: true }]
+  space-before-function-paren: [warn, { anonymous: always, named: never, asyncArrow: always }]
+  arrow-parens: [warn, as-needed, { requireForBlockBody: true }]
+  no-multi-spaces: warn
+
+  # Code smells
+  no-whitespace-before-property: error
+  no-unreachable: error
+  no-fallthrough: error
+  one-var: [error, never]
+
+  # Bad ideas
+  no-eval: error
+  no-extend-native: error
+  no-duplicate-imports: error
+  no-new-wrappers: error
+  no-underscore-dangle: error
+  no-var: error
+

@@ -28,7 +28,7 @@ export const buildMetadata = {
   buildHash: process.env.EOSIO_TOOLBOX_BUILD_HASH ?? 'hash',
 }
 
-type ProcessEnvVar = typeof process.env[string];
+type ProcessEnvVar = typeof process.env[string]
 
 function parseBuildDate(dateAsISOString: ProcessEnvVar, fallbackDate: Date): Date {
   const parsedDate = dateAsISOString ? parseISO(dateAsISOString) : fallbackDate

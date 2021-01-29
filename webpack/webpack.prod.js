@@ -1,8 +1,8 @@
-const { merge } = require('webpack-merge');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require ('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const { commonConfig } = require('./webpack.common');
+const { merge } = require('webpack-merge')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require ('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const { commonConfig } = require('./webpack.common')
 
 /**
  * Production webpack configuration.
@@ -85,4 +85,4 @@ module.exports = merge(commonConfig, {
       new CssMinimizerPlugin(),
     ],
   },
-});
+})
