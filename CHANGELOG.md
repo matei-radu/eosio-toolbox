@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - `getInfo` RPC method to `jsonRpc`.
+- Chain id, block info to Home page.
 
 ### Changed
 - Replaced `steebchen/nginx-spa` with `nginx:mainline-alpine` as it was breaking paths with dots (`.`) like `/account/eosio.token`. This also allowed adding gzip compression and Cache-Control headers.
