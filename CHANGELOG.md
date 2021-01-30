@@ -19,5 +19,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - display app build info.
 - Empty Home page.
 
-[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/7978a05dacb7be59366fe4f2418b268b1b0019a7...v0.1.0
+[Unreleased]: https://github.com/matei-radu/eosio-toolbox/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/matei-radu/eosio-toolbox/compare/7978a05dacb7be59366fe4f2418b268b1b0019a7...v0.1.0
