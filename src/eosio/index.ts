@@ -16,3 +16,4 @@
 
 export { jsonRpc } from './json-rpc'
 export { EosioAccount, EosioRequiredAuth, EosioResourceLimit, EosioPermission } from './get-account'
+export { EosioChainInfo } from './get-info'
