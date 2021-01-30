@@ -14,17 +14,14 @@
  * limitations under the License.
  */
 
-import { JsonRpc } from 'eosjs'
-import { config } from './config'
-import { getAccount } from './get-account'
-import { getInfo } from './get-info'
+import { getJsonRpc } from './json-rpc'
+import { GetInfoResult } from 'eosjs/dist/eosjs-rpc-interfaces'
 
-/** Returns a valid `JsonRpc` instance. */
-export function getJsonRpc(): JsonRpc {
-  return new JsonRpc(config.nodeEndpoint, { fetch })
-}
+export type EosioChainInfo = GetInfoResult
 
-export const jsonRpc = {
-  getAccount,
-  getInfo,
+/**
+ * Wrapper around `JsonRpc.get_info` with typed return. Functionality is unchanged.
+ */
+export function getInfo(): Promise<EosioChainInfo> {
+  return getJsonRpc().get_info()
 }
