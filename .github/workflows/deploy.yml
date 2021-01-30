@@ -31,7 +31,9 @@ jobs:
           GHCR_IMAGE=ghcr.io/${{ github.repository_owner }}/eosio
           VERSION=latest
           COMPLETE_IMAGE_NAME="${GHCR_IMAGE}:${VERSION}"
+          COMMIT_HASH=${{ github.sha }}
           echo "::set-output name=tags::${COMPLETE_IMAGE_NAME}"
+          echo "::set-output name=commit-hash::${COMMIT_HASH}"
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
@@ -42,6 +44,8 @@ jobs:
           push: true
           secrets: |
             GIT_AUTH_TOKEN=${{ github.token }}
+          build-args: |
+            EOSIO_TOOLBOX_BUILD_HASH=${{ steps.prep.outputs.commit-hash }}
 
       - name: Deploy with CapRover CLI
         run: npx caprover deploy
