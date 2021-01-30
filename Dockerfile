@@ -4,6 +4,6 @@ COPY . .
 RUN npm install
 RUN npm run build
 
-FROM steebchen/nginx-spa:latest
+FROM nginx:mainline-alpine
+COPY --from=build ./nginx/default.conf /etc/nginx/conf.d/
 COPY --from=build ./dist /app/
-RUN chmod -R 777 /app
