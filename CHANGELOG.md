@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
+- Replaced `steebchen/nginx-spa` with `nginx:mainline-alpine` as it was breaking paths with dots (`.`) like `/account/eosio.token`. This also allowed adding gzip compression and Cache-Control headers.
 - Upgraded some webpack dependencies:
   - `mini-css-extract-plugin` from `1.3.4` to `1.3.5`
   - `webpack-cli` from `4.3.1` to `4.4.0`
