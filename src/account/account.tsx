@@ -16,12 +16,14 @@
 
 import React, { CSSProperties } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { EosioAccountResources, EosioResource, useAccount } from './use-account'
 import './account.css'
 
 export const Account: React.FC = () => {
   const accountName = useParams()['accountName']
   const { resources, isLoading, error }= useAccount(accountName)
+  const { t } = useTranslation('account')
 
   if (isLoading) {
     return (
@@ -34,7 +36,7 @@ export const Account: React.FC = () => {
   if (error || !resources) {
     return (
       <AccountBaseContent>
-        <p>Cannot find account <i>{accountName}</i>.</p>
+        <p>{t('error',{ name: accountName})}</p>
       </AccountBaseContent>
     )
   }
@@ -47,29 +49,34 @@ export const Account: React.FC = () => {
 }
 
 const AccountBaseContent: React.FC = ({ children }) => {
+  const { t } = useTranslation('account')
+
   return (
     <div className="account">
-      <h1>Account</h1>
-      <Link to={'/'}>Home</Link>
+      <h1>{t('heading')}</h1>
+      <Link to={'/'}>{t('navigation.home')}</Link>
       {children}
     </div>
   )
 }
 
-function Loading() {
-  return <p>Loading...</p>
+const Loading: React.FC = () => {
+  const { t } = useTranslation('account')
+
+  return <p>{t('loading')}</p>
 }
 
 const AccountResources: React.FC<{ resources: EosioAccountResources }> = ({ resources }) => {
   const { ram, cpu, net } = resources
+  const { t } = useTranslation('account')
 
   return (
     <section className="account-resources">
-      <h2>Resources</h2>
+      <h2>{t('resources.heading')}</h2>
       <div className="resource-row-container">
-        <ResourceRow res={ram} resName={'RAM'} />
-        <ResourceRow res={cpu} resName={'CPU'} />
-        <ResourceRow res={net} resName={'NET'} />
+        <ResourceRow res={ram} resName={t('resources.ram')} />
+        <ResourceRow res={cpu} resName={t('resources.cpu')} />
+        <ResourceRow res={net} resName={t('resources.net')} />
       </div>
     </section>
   )

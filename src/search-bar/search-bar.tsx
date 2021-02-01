@@ -15,6 +15,7 @@
  */
 
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSearchBar } from './use-search-bar'
 import './search-bar.css'
 
@@ -26,6 +27,7 @@ export const SearchBar: React.FC = () => {
     inputTextRef,
     submitButtonRef,
   } = useSearchBar()
+  const { t } = useTranslation('searchBar')
 
   return (
     <section className="search-bar">
@@ -34,7 +36,7 @@ export const SearchBar: React.FC = () => {
           className="search-bar-form__label"
           htmlFor="search-bar-input-txt"
         >
-          Search accounts
+          {t('label')}
         </label>
         <div className="search-bar-form__input-row">
           <input
@@ -44,13 +46,13 @@ export const SearchBar: React.FC = () => {
             ref={inputTextRef}
             value={searchText}
             onChange={onSearchTextChange}
-            placeholder={'Search accounts…'}
+            placeholder={t('placeholder')}
           />
           <input
             className="search-bar-form__submit"
             type="submit"
             ref={submitButtonRef}
-            value="Go"
+            value={t('submit') as string}
           />
         </div>
       </form>

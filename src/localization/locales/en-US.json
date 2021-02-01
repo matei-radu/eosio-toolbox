@@ -2,7 +2,7 @@
   "home": {
     "heading": "Home",
     "navigation": {
-      "settings": "Settttings"
+      "settings": "Settings"
     },
     "chainInfo": {
       "chainIdHeading": "Chain id",
@@ -16,5 +16,49 @@
     },
     "error": "Something went wrong when retrieving chain info.",
     "loading": "Loading…"
+  },
+
+  "searchBar": {
+    "label": "Search accounts",
+    "placeholder": "Search accounts…",
+    "submit": "Go"
+  },
+
+  "notFound": {
+    "heading": "Page not found",
+    "navigation": {
+      "home": "Home"
+    }
+  },
+
+  "account": {
+    "heading": "Account",
+    "navigation": {
+      "home": "Home"
+    },
+    "resources": {
+      "heading": "Resources",
+      "ram": "RAM",
+      "cpu": "CPU",
+      "net": "NET"
+    },
+    "error": "Cannot find account {{name}}.",
+    "loading": "Loading…"
+  },
+
+  "settings": {
+    "heading": "Settings",
+    "navigation": {
+      "home": "Home"
+    },
+    "info": {
+      "heading": "Info",
+      "versionHeading": "Head block",
+      "version": "$t(settings.info.versionHeading): {{version}}",
+      "buildHashHeading": "Build hash",
+      "buildHash": "$t(settings.info.buildHashHeading): {{hash}}",
+      "buildTimeHeading": "Build time",
+      "buildTime": "$t(settings.info.buildTimeHeading): {{time}}"
+    }
   }
 }

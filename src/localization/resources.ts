@@ -22,5 +22,9 @@ export const resources: Resource = {
     global: enUS,
 
     home: enUS.home,
+    searchBar: enUS.searchBar,
+    notFound: enUS.notFound,
+    account: enUS.account,
+    settings: enUS.settings,
   },
 }
