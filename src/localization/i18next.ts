@@ -35,9 +35,10 @@ const config: InitOptions = {
   ns: 'global',
   defaultNS: 'global',
 
-  supportedLngs: ['en-US'],
+  supportedLngs: ['en-us'],
   // If no translation string is available, use 'en-US'.
-  fallbackLng: 'en-US',
+  fallbackLng: 'en-us',
+  lowerCaseLng: true,
 
   interpolation: {
     // React already safes from xss.
