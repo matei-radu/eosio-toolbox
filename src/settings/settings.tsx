@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { formatISO } from 'date-fns'
@@ -22,6 +22,14 @@ import { buildMetadata } from '../build-metadata'
 import './settings.css'
 
 export const Settings: React.FC = () => {
+  return (
+    <Suspense fallback={null}>
+      <SettingsContent />
+    </Suspense>
+  )
+}
+
+const SettingsContent: React.FC = () => {
   const { t } = useTranslation('settings')
 
   return (

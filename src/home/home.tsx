@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useChainInfo } from './use-chain-info'
@@ -22,28 +22,33 @@ import './home.css'
 
 export const Home: React.FC = () => {
   const { info, isLoading, error } = useChainInfo()
-  const { t } = useTranslation('home')
 
   if (isLoading) {
     return (
-      <HomeBaseContent>
-        <Loading />
-      </HomeBaseContent>
+      <Suspense fallback={null}>
+        <HomeBaseContent>
+          <Loading />
+        </HomeBaseContent>
+      </Suspense>
     )
   }
 
   if (error || !info) {
     return (
-      <HomeBaseContent>
-        <p>{t('error')}</p>
-      </HomeBaseContent>
+      <Suspense fallback={null}>
+        <HomeBaseContent>
+          <ErrorContent />
+        </HomeBaseContent>
+      </Suspense>
     )
   }
 
   return (
-    <HomeBaseContent>
-      <ChainInfo info={info} />
-    </HomeBaseContent>
+    <Suspense fallback={null}>
+      <HomeBaseContent>
+        <ChainInfo info={info} />
+      </HomeBaseContent>
+    </Suspense>
   )
 }
 
@@ -104,4 +109,10 @@ const Loading: React.FC = () => {
   const { t } = useTranslation('home')
 
   return <p>{t('loading')}</p>
+}
+
+const ErrorContent: React.FC = () => {
+  const { t } = useTranslation('home')
+
+  return <p>{t('error')}</p>
 }

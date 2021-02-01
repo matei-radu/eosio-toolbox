@@ -1,0 +1,14 @@
+{
+  "heading": "Account",
+  "navigation": {
+    "home": "Home"
+  },
+  "resources": {
+    "heading": "Resources",
+    "ram": "RAM",
+    "cpu": "CPU",
+    "net": "NET"
+  },
+  "error": "Cannot find account {{name}}.",
+  "loading": "Loading…"
+}

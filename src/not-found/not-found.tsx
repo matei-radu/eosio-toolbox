@@ -14,13 +14,21 @@
  * limitations under the License.
  */
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import './not-found.css'
 
 export const NotFound: React.FC = () => {
-  const { t } = useTranslation('notFound')
+  return (
+    <Suspense fallback={null}>
+      <NotFoundContent />
+    </Suspense>
+  )
+}
+
+const NotFoundContent: React.FC = () => {
+  const { t } = useTranslation('not-found')
 
   return (
     <div className="not-found">

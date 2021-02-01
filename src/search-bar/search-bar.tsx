@@ -14,12 +14,20 @@
  * limitations under the License.
  */
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSearchBar } from './use-search-bar'
 import './search-bar.css'
 
 export const SearchBar: React.FC = () => {
+  return (
+    <Suspense fallback={null}>
+      <SearchBarContent />
+    </Suspense>
+  )
+}
+
+const SearchBarContent: React.FC = () => {
   const {
     searchText,
     onSearchTextChange,
@@ -27,7 +35,7 @@ export const SearchBar: React.FC = () => {
     inputTextRef,
     submitButtonRef,
   } = useSearchBar()
-  const { t } = useTranslation('searchBar')
+  const { t } = useTranslation('search-bar')
 
   return (
     <section className="search-bar">

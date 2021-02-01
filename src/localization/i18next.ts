@@ -15,16 +15,23 @@
  */
 
 import i18n, { InitOptions } from 'i18next'
+import i18nHttpBackend, { BackendOptions } from 'i18next-http-backend'
 import { initReactI18next } from 'react-i18next'
-import { resources } from './resources'
+
+const backendConfig: BackendOptions = {
+  loadPath: '/locales/{{lng}}/{{ns}}.json',
+}
 
 const config: InitOptions = {
-  resources,
+  backend: backendConfig,
 
   debug: true,
 
+  ns: 'global',
   defaultNS: 'global',
 
+  supportedLngs: ['en-US'],
+  // @todo add browser detection
   lng: 'en-US',
   // If no translation string is available, use 'en-US'.
   fallbackLng: 'en-US',
@@ -39,7 +46,11 @@ let localizationInitialized = false
 
 export async function initLocalization(): Promise<void> {
   if (!localizationInitialized) {
-    await i18n.use(initReactI18next).init(config)
+    await i18n
+      .use(i18nHttpBackend)
+      .use(initReactI18next)
+      .init(config)
+
     localizationInitialized = true
   }
 }

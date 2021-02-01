@@ -1,6 +1,7 @@
 const path = require('path')
 const { EnvironmentPlugin } = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const DotenvPlugin = require('dotenv-webpack')
 
 const ROOT_PATH = path.join(__dirname, '..')
@@ -42,6 +43,13 @@ const commonConfig = {
     // Content is minified automatically when `mode` is set to `production`.
     new HtmlWebpackPlugin({
       template: path.join(SRC_PATH, 'index.html'),
+    }),
+
+    new CopyPlugin({
+      patterns: [
+        // Copy localization files as-is.
+        { from: path.join(SRC_PATH, 'localization', 'locales'), to: 'locales' },
+      ],
     }),
 
     // Replace instances of `process.env` in the application code with their actual values

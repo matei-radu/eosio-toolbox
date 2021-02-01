@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties, Suspense } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { EosioAccountResources, EosioResource, useAccount } from './use-account'
@@ -23,28 +23,33 @@ import './account.css'
 export const Account: React.FC = () => {
   const accountName = useParams()['accountName']
   const { resources, isLoading, error }= useAccount(accountName)
-  const { t } = useTranslation('account')
 
   if (isLoading) {
     return (
-      <AccountBaseContent>
-        <Loading />
-      </AccountBaseContent>
+      <Suspense fallback={null}>
+        <AccountBaseContent>
+          <Loading />
+        </AccountBaseContent>
+      </Suspense>
     )
   }
 
   if (error || !resources) {
     return (
-      <AccountBaseContent>
-        <p>{t('error',{ name: accountName})}</p>
-      </AccountBaseContent>
+      <Suspense fallback={null}>
+        <AccountBaseContent>
+          <ErrorContent accountName={accountName} />
+        </AccountBaseContent>
+      </Suspense>
     )
   }
 
   return (
-    <AccountBaseContent>
-      <AccountResources resources={resources} />
-    </AccountBaseContent>
+    <Suspense fallback={null}>
+      <AccountBaseContent>
+        <AccountResources resources={resources} />
+      </AccountBaseContent>
+    </Suspense>
   )
 }
 
@@ -64,6 +69,12 @@ const Loading: React.FC = () => {
   const { t } = useTranslation('account')
 
   return <p>{t('loading')}</p>
+}
+
+const ErrorContent: React.FC<{ accountName: string }> = ({ accountName }) => {
+  const { t } = useTranslation('account')
+
+  return <p>{t('error',{ name: accountName })}</p>
 }
 
 const AccountResources: React.FC<{ resources: EosioAccountResources }> = ({ resources }) => {
