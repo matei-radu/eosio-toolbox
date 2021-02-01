@@ -16,14 +16,21 @@
 
 import i18n, { InitOptions } from 'i18next'
 import i18nHttpBackend, { BackendOptions } from 'i18next-http-backend'
+import i18nLanguageDetector, { DetectorOptions } from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 
 const backendConfig: BackendOptions = {
   loadPath: '/locales/{{lng}}/{{ns}}.json',
 }
 
+const detectorConfig: DetectorOptions = {
+  order: ['localStorage', 'navigator'],
+  caches: ['localStorage'],
+}
+
 const config: InitOptions = {
   backend: backendConfig,
+  detection: detectorConfig,
 
   debug: true,
 
@@ -31,8 +38,6 @@ const config: InitOptions = {
   defaultNS: 'global',
 
   supportedLngs: ['en-US'],
-  // @todo add browser detection
-  lng: 'en-US',
   // If no translation string is available, use 'en-US'.
   fallbackLng: 'en-US',
 
@@ -48,6 +53,7 @@ export async function initLocalization(): Promise<void> {
   if (!localizationInitialized) {
     await i18n
       .use(i18nHttpBackend)
+      .use(i18nLanguageDetector)
       .use(initReactI18next)
       .init(config)
 
