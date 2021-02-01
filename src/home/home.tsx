@@ -16,11 +16,13 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useChainInfo } from './use-chain-info'
 import './home.css'
 
 export const Home: React.FC = () => {
   const { info, isLoading, error } = useChainInfo()
+  const { t } = useTranslation('home')
 
   if (isLoading) {
     return (
@@ -33,7 +35,7 @@ export const Home: React.FC = () => {
   if (error || !info) {
     return (
       <HomeBaseContent>
-        <p>Something went wrong when retrieving chain info.</p>
+        <p>{t('error')}</p>
       </HomeBaseContent>
     )
   }
@@ -46,12 +48,14 @@ export const Home: React.FC = () => {
 }
 
 const HomeBaseContent: React.FC = ({ children }) => {
+  const { t } = useTranslation('home')
+
   return (
     <div className="home">
-      <h1>Home</h1>
+      <h1>{t('heading')}</h1>
       <nav>
         <ul>
-          <li><Link to={'/settings'}>Settings</Link></li>
+          <li><Link to={'/settings'}>{t('navigation.settings')}</Link></li>
         </ul>
       </nav>
       {children}
@@ -74,23 +78,30 @@ const ChainInfo: React.FC<ChainInfoProps> = ({ info }) => {
     last_irreversible_block_id,
   } = info
 
+  const { t } = useTranslation('home')
+
   return (
     <div>
-      <p>Chain id: {chain_id}</p>
-      <p>Head block: {head_block_num} ({head_block_id})</p>
+      <p>{t('home.chainInfo.chainId', { id: chain_id })}</p>
+      <p>{t('home.chainInfo.headBlock', { num: head_block_num, id: head_block_id })}</p>
       <p>
-        Head block producer:{' '}
+        {t('home.chainInfo.headBlockProducerHeading')}
+        {': '}
         <Link to={`/account/${head_block_producer}`}>{head_block_producer}</Link>
       </p>
       <p>
         Head block time: {head_block_time}
       </p>
-      <p>
-        Last irreversible block:{' '}
-        {last_irreversible_block_num} ({last_irreversible_block_id})
-      </p>
+      <p>{t('home.chainInfo.lastIrreversibleBlock', {
+        num: last_irreversible_block_num,
+        id: last_irreversible_block_id,
+      })}</p>
     </div>
   )
 }
 
-const Loading: React.FC = () => <p>Loading...</p>
+const Loading: React.FC = () => {
+  const { t } = useTranslation('home')
+
+  return <p>{t('loading')}</p>
+}

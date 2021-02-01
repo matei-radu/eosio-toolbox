@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { App } from './app'
-import { initLocalization } from './localization'
+import { Resource } from 'i18next'
+import enUS from './locales/en-US.json'
 
-initLocalization()
+export const resources: Resource = {
+  'en-US': {
+    global: enUS,
 
-ReactDOM.render(<App />, document.getElementById('root'))
+    home: enUS.home,
+  },
+}
