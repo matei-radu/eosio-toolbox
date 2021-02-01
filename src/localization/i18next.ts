@@ -32,8 +32,6 @@ const config: InitOptions = {
   backend: backendConfig,
   detection: detectorConfig,
 
-  debug: true,
-
   ns: 'global',
   defaultNS: 'global',
 
