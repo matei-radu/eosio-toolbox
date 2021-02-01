@@ -1,0 +1,15 @@
+{
+  "heading": "Settings",
+  "navigation": {
+    "home": "Home"
+  },
+  "info": {
+    "heading": "Info",
+    "versionHeading": "Head block",
+    "version": "$t(settings.info.versionHeading): {{version}}",
+    "buildHashHeading": "Build hash",
+    "buildHash": "$t(settings.info.buildHashHeading): {{hash}}",
+    "buildTimeHeading": "Build time",
+    "buildTime": "$t(settings.info.buildTimeHeading): {{time}}"
+  }
+}

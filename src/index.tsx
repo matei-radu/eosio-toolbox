@@ -17,5 +17,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './app'
+import { initLocalization } from './localization'
+
+initLocalization()
 
 ReactDOM.render(<App />, document.getElementById('root'))
