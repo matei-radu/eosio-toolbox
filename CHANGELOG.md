@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Upgraded NPM lockfile to version 2.
+- Upgraded TypeScript dependencies:
+  - `typescript` from `4.1.3` to `4.2.3`
+  - `tslib` from `2.0.3` to `2.1.0`
 - Upgraded ESLint dependencies:
   - `eslint` from `7.18.0` to `7.21.0`
   - `@typescript-eslint/eslint-plugin` from `4.14.1` to `4.16.1`
