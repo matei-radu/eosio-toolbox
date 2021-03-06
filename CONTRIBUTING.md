@@ -10,6 +10,12 @@ Thank you for even just considering contributing to this project. Seeing people 
 - [License](#license)
 
 ## Development
+### Requirements
+- npm v7.x
+- Node.js v12.x or most recent LTS version
+
+More recent Non-LTS versions of Node.js, like 13 and 15, are probably fine too, but it is still recommended using an LTS version.
+
 ### Environment variables
 The project is configured to have some support for environment variables through webpack and dotenv.
 
