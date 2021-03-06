@@ -87,17 +87,17 @@ const ChainInfo: React.FC<ChainInfoProps> = ({ info }) => {
 
   return (
     <div>
-      <p>{t('home.chainInfo.chainId', { id: chain_id })}</p>
-      <p>{t('home.chainInfo.headBlock', { num: head_block_num, id: head_block_id })}</p>
+      <p>{t('chainInfo.chainId', { id: chain_id })}</p>
+      <p>{t('chainInfo.headBlock', { num: head_block_num, id: head_block_id })}</p>
       <p>
-        {t('home.chainInfo.headBlockProducerHeading')}
+        {t('chainInfo.headBlockProducerHeading')}
         {': '}
         <Link to={`/account/${head_block_producer}`}>{head_block_producer}</Link>
       </p>
       <p>
         Head block time: {head_block_time}
       </p>
-      <p>{t('home.chainInfo.lastIrreversibleBlock', {
+      <p>{t('chainInfo.lastIrreversibleBlock', {
         num: last_irreversible_block_num,
         id: last_irreversible_block_id,
       })}</p>
