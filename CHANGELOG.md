@@ -8,9 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Upgraded NPM lockfile to version 2.
 - Upgraded ESLint dependencies:
-  - `eslint` from `7.18.0` to `7.19.0`
-  - `@typescript-eslint/eslint-plugin` from `4.14.1` to `4.14.2`
-  - `@typescript-eslint/parser` from `4.14.1` to `4.14.2`
+  - `eslint` from `7.18.0` to `7.21.0`
+  - `@typescript-eslint/eslint-plugin` from `4.14.1` to `4.16.1`
+  - `@typescript-eslint/parser` from `4.14.1` to `4.16.1`
 - Upgraded `html-webpack-plugin` from preview `5.0.0-beta.5` to stable `5.0.0`.
 
 ## [0.2.1] - 2021-02-01
