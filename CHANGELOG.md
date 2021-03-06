@@ -14,7 +14,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `eslint` from `7.18.0` to `7.21.0`
   - `@typescript-eslint/eslint-plugin` from `4.14.1` to `4.16.1`
   - `@typescript-eslint/parser` from `4.14.1` to `4.16.1`
-- Upgraded `html-webpack-plugin` from preview `5.0.0-beta.5` to stable `5.0.0`.
+- Upgraded webpack dependencies:
+  - `webpack` from `5.19.0` to `5.24.3`
+  - `webpack-cli` from `4.4.0` to `4.5.0`
+  - `mini-css-extract-plugin` from `1.3.5` to `1.3.9`
+  - `html-webpack-plugin` from preview `5.0.0-beta.5` to stable `5.2.0`
+  - `copy-webpack-plugin` from `7.0.0` to `8.0.0`
+  - `css-loader` from `5.0.1` to `5.1.1`
+  - `ts-loader` from `8.0.14` to `8.0.17`
+  - `dotenv-webpack` from `6.0.0` to `7.0.1`
 
 ## [0.2.1] - 2021-02-01
 ### Changed
