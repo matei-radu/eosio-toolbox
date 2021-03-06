@@ -6,10 +6,10 @@
   "info": {
     "heading": "Info",
     "versionHeading": "Head block",
-    "version": "$t(settings.info.versionHeading): {{version}}",
+    "version": "$t(info.versionHeading): {{version}}",
     "buildHashHeading": "Build hash",
-    "buildHash": "$t(settings.info.buildHashHeading): {{hash}}",
+    "buildHash": "$t(info.buildHashHeading): {{hash}}",
     "buildTimeHeading": "Build time",
-    "buildTime": "$t(settings.info.buildTimeHeading): {{time}}"
+    "buildTime": "$t(info.buildTimeHeading): {{time}}"
   }
 }
