@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded TypeScript dependencies:
   - `typescript` from `4.1.3` to `4.2.3`
   - `tslib` from `2.0.3` to `2.1.0`
+- Upgraded i18next dependencies:
+  - `i18next` from `19.8.5` to `19.9.1`
+  - `i18next-http-backend` from `1.1.0` to `1.1.1`
+  - `react-i18next` from `11.8.5` to `11.8.8`
 - Upgraded ESLint dependencies:
   - `eslint` from `7.18.0` to `7.21.0`
   - `@typescript-eslint/eslint-plugin` from `4.14.1` to `4.16.1`
